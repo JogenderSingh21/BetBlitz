@@ -7,7 +7,7 @@ import ruppee from "../assets/ruppee.svg";
 import { calculatePayout } from "../secure/payoutCalc";
 import LostPopup from "../components/LostPopup";
 import clickSound from "../assets/audio-mines-2.mp3";
-import bombSound from "../assets/audio-bomb-2.mp3";
+// import bombSound from "../assets/audio-bomb-2.mp3";
 import Loader from "../components/Loader";
 
 const Mine = ({ totalAmount, setTotalAmount }) => {
@@ -29,9 +29,9 @@ const Mine = ({ totalAmount, setTotalAmount }) => {
   const [totalProfit, setTotalProfit] = useState(0.0);
   const [sentBet, setSentBet] = useState(0.0);
   const clickAudioRef = useRef(null);
-  const bombAudioRef = useRef(null);
-  const [gay, setGay] = useState(false);
-  const [showGay, setShowGay] = useState(false);
+  // const bombAudioRef = useRef(null);
+  // const [gay, setGay] = useState(false);
+  // const [showGay, setShowGay] = useState(false);
 
   useEffect(() => {
     if (firstBombClicked) {
@@ -74,7 +74,7 @@ const Mine = ({ totalAmount, setTotalAmount }) => {
       return;
     }
     if (betAmount > totalAmount) {
-      alert("BKL, Itna Paisa nhi hai Terpe");
+      alert("Not Enough Money");
       return;
     }
     reset();
@@ -93,7 +93,7 @@ const Mine = ({ totalAmount, setTotalAmount }) => {
       animationEffect(e);
       setTimeout(() => {
         if (bombIndices.includes(index)) {
-          bombAudioRef.current.play();
+          // bombAudioRef.current.play();
           setClickedIndices((prev) => [...prev, index]);
           setFirstBombClicked(true);
           setVisibleImages(Array(totalCells).fill(true));
@@ -263,7 +263,7 @@ const Mine = ({ totalAmount, setTotalAmount }) => {
             >
               {isBetStarted ? "Cashout" : "Bet"}
             </button>
-            <div className="text-blue-500 text-sm mt-3 cursor-pointer">
+            {/* <div className="text-blue-500 text-sm mt-3 cursor-pointer">
               <span
                 onClick={() => {
                   setShowGay(true);
@@ -326,7 +326,7 @@ const Mine = ({ totalAmount, setTotalAmount }) => {
                   </button>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
           <div className="md:col-span-3 col-span-4 m-auto sm:py-3 py-1.5 relative w-full xs:w-fit">
             <Popup
@@ -362,7 +362,7 @@ const Mine = ({ totalAmount, setTotalAmount }) => {
         </div>
       </div>
       <audio ref={clickAudioRef} src={clickSound} />
-      <audio ref={bombAudioRef} src={bombSound} />
+      {/* <audio ref={bombAudioRef} src={bombSound} /> */}
     </div>
   );
 };

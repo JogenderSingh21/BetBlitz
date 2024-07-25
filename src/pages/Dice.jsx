@@ -64,7 +64,7 @@ const Dice = ({ totalAmount, setTotalAmount }) => {
 
   const handleBetClicked = () => {
     if (betAmount > totalAmount) {
-      alert("BKL, Itna paisa hai terpe?");
+      alert("Not Enough Money");
       return;
     }
     betAudio.play();
